@@ -8,17 +8,25 @@ assert sys.version_info >= version, "This script requires at least Python {0}.{1
 logging.basicConfig(format='[%(filename)s:%(lineno)d] %(message)s', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-def render():
+def render(game,current):
     '''Display the current location'''
+    
+    print("You are at" + game['room'][current]['name'])
+    print(game['room'][current]['desc'])
     return True
 
-def update():
+def update(game,current,response):
     '''update our location, if possible. etc.'''
-    return True
+    for e in game['game']['room']['exists']:
+        if response = e['verb']:
+            current = e['target']
+    return current
 
 def check_input():
     '''check input'''
     response = input("What would you like to do? ")
+    response = response.strip()
+    response = response.upper()
     return response
 
 
